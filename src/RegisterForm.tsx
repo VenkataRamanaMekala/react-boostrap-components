@@ -8,8 +8,6 @@ const RegisterForm: React.FC = () => {
 
   const [fruits, setFruits] = useState<string[]>([]);
 
-  const [fruitInput, setFruitInput] = useState("");
-
   const [showDropdown, setShowDropdown] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -307,20 +305,20 @@ const RegisterForm: React.FC = () => {
 
             <div className="position-relative w-50">
               {/* Select Box */}
-              <div
-                className="d-flex align-items-center flex-wrap gap-2 p-2 border rounded-3"
+              <button
+                type="button"
+                className="d-flex align-items-center flex-wrap gap-2 p-2 border rounded-3 w-100 bg-white"
                 style={{
                   minHeight: "45px",
                   cursor: "pointer",
-                  backgroundColor: "#fff",
                 }}
-                onClick={() => setShowDropdown(!showDropdown)}
+                onClick={() => setShowDropdown((prev) => !prev)}
               >
                 {/* Selected Fruits */}
                 {fruits.length > 0 ? (
-                  fruits.map((fruit, index) => (
+                  fruits.map((fruit: string, index: number) => (
                     <div
-                      key={index}
+                      key={fruit}
                       className="bg-light border rounded-pill px-2 py-1 d-flex align-items-center"
                     >
                       <span>{fruit}</span>
@@ -331,10 +329,14 @@ const RegisterForm: React.FC = () => {
                         style={{
                           fontSize: "10px",
                         }}
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                           e.stopPropagation();
 
-                          setFruits(fruits.filter((_, i) => i !== index));
+                          setFruits(
+                            fruits.filter(
+                              (_: string, i: number) => i !== index,
+                            ),
+                          );
                         }}
                       ></button>
                     </div>
@@ -342,9 +344,9 @@ const RegisterForm: React.FC = () => {
                 ) : (
                   <span className="text-muted">Select fruits</span>
                 )}
-              </div>
+              </button>
 
-              {/* Show Names Only After Click */}
+              {/* Dropdown */}
               {showDropdown && (
                 <div
                   className="border rounded-3 bg-white shadow-sm mt-1 position-absolute w-100"
@@ -352,13 +354,11 @@ const RegisterForm: React.FC = () => {
                     zIndex: 1000,
                   }}
                 >
-                  {fruitOptions.map((fruit, index) => (
-                    <div
-                      key={index}
-                      className="p-2 dropdown-item"
-                      style={{
-                        cursor: "pointer",
-                      }}
+                  {fruitOptions.map((fruit: string) => (
+                    <button
+                      key={fruit}
+                      type="button"
+                      className="dropdown-item p-2 text-start"
                       onClick={() => {
                         if (!fruits.includes(fruit)) {
                           setFruits([...fruits, fruit]);
@@ -368,12 +368,13 @@ const RegisterForm: React.FC = () => {
                       }}
                     >
                       {fruit}
-                    </div>
+                    </button>
                   ))}
                 </div>
               )}
             </div>
           </div>
+
           <div className="mb-3">
             <label className="form-label d-block">Select quantity:</label>
 

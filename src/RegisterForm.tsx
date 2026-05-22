@@ -104,10 +104,8 @@ const RegisterForm: React.FC = () => {
             This is your sample Form
           </legend>
 
-          {/* Your Form Here */}
         </fieldset>
         <form onSubmit={handleSubmit}>
-          {/* First Name */}
           <div className="mb-3">
             <label className="form-label">First Name:</label>
 
@@ -121,7 +119,6 @@ const RegisterForm: React.FC = () => {
             />
           </div>
 
-          {/* Last Name */}
           <div className="mb-3">
             <label className="form-label">Last Name:</label>
             <input
@@ -134,7 +131,6 @@ const RegisterForm: React.FC = () => {
             />
           </div>
 
-          {/* Gender */}
           <div className="mb-3">
             <label className="form-label d-block">Gender:</label>
 
@@ -175,7 +171,6 @@ const RegisterForm: React.FC = () => {
             </div>
           </div>
 
-          {/* Single Dropdown */}
           <div className="mb-3">
             <label className="form-label">Choose an option:</label>
 
@@ -192,7 +187,6 @@ const RegisterForm: React.FC = () => {
             </select>
           </div>
 
-          {/* Multiple Checkbox */}
           <div className="mb-3">
             <label className="form-label d-block">
               Select Multiple Options:
@@ -229,7 +223,6 @@ const RegisterForm: React.FC = () => {
             </div>
           </div>
 
-          {/* Auto Suggest */}
           <div className="mb-3">
             <label className="form-label">
               Start typing and it will guess:
@@ -252,7 +245,6 @@ const RegisterForm: React.FC = () => {
             </datalist>
           </div>
 
-          {/* Color Picker */}
           <div className="mb-3 d-flex align-items-center gap-3">
             <label className="form-label mb-0">
               Select your favorite color:
@@ -267,7 +259,6 @@ const RegisterForm: React.FC = () => {
             />
           </div>
 
-          {/* Date Picker */}
           <div className="mb-3 d-flex align-items-center gap-3">
             <label className="form-label mb-0">Select a Date:</label>
 
@@ -280,7 +271,6 @@ const RegisterForm: React.FC = () => {
             />
           </div>
 
-          {/* Range */}
           <div className="mb-3">
             <label className="form-label d-block">
               Scroll to see a range value:
@@ -304,7 +294,6 @@ const RegisterForm: React.FC = () => {
             <label className="form-label">Select Fruits:</label>
 
             <div className="position-relative w-50">
-              {/* Select Box */}
               <button
                 type="button"
                 className="d-flex align-items-center flex-wrap gap-2 p-2 border rounded-3 w-100 bg-white"
@@ -314,7 +303,6 @@ const RegisterForm: React.FC = () => {
                 }}
                 onClick={() => setShowDropdown((prev) => !prev)}
               >
-                {/* Selected Fruits */}
                 {fruits.length > 0 ? (
                   fruits.map((fruit: string, index: number) => (
                     <div
@@ -346,7 +334,6 @@ const RegisterForm: React.FC = () => {
                 )}
               </button>
 
-              {/* Dropdown */}
               {showDropdown && (
                 <div
                   className="border rounded-3 bg-white shadow-sm mt-1 position-absolute w-100"
@@ -409,12 +396,10 @@ const RegisterForm: React.FC = () => {
               </button>
             </div>
           </div>
-          {/* File Upload */}
           <div className="mb-3 d-flex align-items-center gap-3">
             <label className="form-label mb-0">Select a File:</label>
 
             <div className="d-flex align-items-center gap-2">
-              {/* Hidden File Input */}
               <input
                 type="file"
                 id="fileUpload"
@@ -422,7 +407,6 @@ const RegisterForm: React.FC = () => {
                 onChange={handleFileChange}
               />
 
-              {/* Choose File Button */}
               <label
                 htmlFor="fileUpload"
                 className="btn btn-outline-secondary btn-sm"
@@ -431,14 +415,12 @@ const RegisterForm: React.FC = () => {
                 Choose File
               </label>
 
-              {/* File Name */}
               <span className="text-muted">
                 {formData.file ? formData.file.name : "No file chosen"}
               </span>
             </div>
           </div>
 
-          {/* Long Message */}
           <div className="mb-4">
             <label className="form-label">Long Message:</label>
 
@@ -452,7 +434,6 @@ const RegisterForm: React.FC = () => {
             />
           </div>
 
-          {/* Submit */}
           <div className="d-flex justify-content-end mt-4">
             <button
               type="submit"
@@ -465,7 +446,6 @@ const RegisterForm: React.FC = () => {
         </form>
       </div>
 
-      {/* Toast Message */}
       <ToastContainer position="top-end" className="p-3">
         <Toast
           show={showToast}
